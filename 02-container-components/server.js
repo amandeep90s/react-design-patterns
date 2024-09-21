@@ -1,69 +1,69 @@
-const express = require("express");
+const express = require('express');
 
 const app = express();
 
 app.use(express.json());
 
 let currentUser = {
-  name: "Sarah Waters",
+  name: 'Sarah Waters',
   age: 55,
-  country: "United Kingdom",
-  books: ["Fingersmith", "The Night Watch"],
+  country: 'United Kingdom',
+  books: ['Fingersmith', 'The Night Watch'],
 };
 
 let users = [
   {
-    name: "Sarah Waters",
+    name: 'Sarah Waters',
     age: 55,
-    country: "United Kingdom",
-    books: ["Fingersmith", "The Night Watch"],
+    country: 'United Kingdom',
+    books: ['Fingersmith', 'The Night Watch'],
   },
   {
-    name: "Haruki Murakami",
+    name: 'Haruki Murakami',
     age: 71,
-    country: "Japan",
-    books: ["Norwegian Wood", "Kafka on the Shore"],
+    country: 'Japan',
+    books: ['Norwegian Wood', 'Kafka on the Shore'],
   },
   {
-    name: "Chimamanda Ngozi Adichie",
+    name: 'Chimamanda Ngozi Adichie',
     age: 43,
-    country: "Nigeria",
-    books: ["Half of a Yellow Sun", "Americanah"],
+    country: 'Nigeria',
+    books: ['Half of a Yellow Sun', 'Americanah'],
   },
 ];
 
 let books = [
   {
-    name: "To Kill a Mockingbird",
+    name: 'To Kill a Mockingbird',
     pages: 281,
-    title: "Harper Lee",
+    title: 'Harper Lee',
     price: 12.99,
   },
   {
-    name: "The Catcher in the Rye",
+    name: 'The Catcher in the Rye',
     pages: 224,
-    title: "J.D. Salinger",
+    title: 'J.D. Salinger',
     price: 9.99,
   },
   {
-    name: "The Little Prince",
+    name: 'The Little Prince',
     pages: 85,
-    title: "Antoine de Saint-Exupéry",
+    title: 'Antoine de Saint-Exupéry',
     price: 7.99,
   },
 ];
 
-app.get("/current-user", (req, res) => res.json(currentUser));
+app.get('/api/current-user', (req, res) => res.json(currentUser));
 
-app.get("/users/:id", (req, res) => {
+app.get('/api/users/:id', (req, res) => {
   const { id } = req.params;
   console.log(id);
   res.json(users.find((user) => user.id === id));
 });
 
-app.get("/users", (req, res) => res.json(users));
+app.get('/api/users', (req, res) => res.json(users));
 
-app.post("/users/:id", (req, res) => {
+app.post('/api/users/:id', (req, res) => {
   const { id } = req.params;
   const { user: editedUser } = req.body;
 
@@ -72,9 +72,9 @@ app.post("/users/:id", (req, res) => {
   res.json(users.find((user) => user.id === id));
 });
 
-app.get("/books", (req, res) => res.json(books));
+app.get('/api/books', (req, res) => res.json(books));
 
-app.get("/books/:id", (req, res) => {
+app.get('/api/books/:id', (req, res) => {
   const { id } = req.params;
   res.json(books.find((book) => book.id === id));
 });
