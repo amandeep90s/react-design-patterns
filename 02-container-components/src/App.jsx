@@ -2,6 +2,7 @@ import axios from 'axios';
 import { BookInfo } from './components/book-info';
 import { CurrentUserLoader } from './components/current-user-loader';
 import { DataSource } from './components/data-source';
+import { DataSourceWithRender } from './components/data-source-with-render';
 import { ResourceLoader } from './components/resource-loader';
 import { UserInfo } from './components/user-info';
 import { UserLoader } from './components/user-loader';
@@ -40,6 +41,11 @@ const App = () => {
       >
         <UserInfo />
       </DataSource>
+      <hr />
+      <DataSourceWithRender
+        getData={() => getDataFromServer('/api/users/3')}
+        render={(resource) => <UserInfo user={resource} />}
+      />
     </>
   );
 };
