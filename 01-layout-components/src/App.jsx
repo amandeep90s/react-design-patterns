@@ -5,6 +5,7 @@ import { LargeBookListItem } from './components/books/LargeListItems';
 import { SmallBookListItem } from './components/books/SmallListItems';
 import { NumberedList } from './components/lists/Numbered';
 import { RegularList } from './components/lists/Regular';
+import { Modal } from './components/Modal';
 import { SplitScreen } from './components/split-screen';
 import { authors } from './data/authors';
 import { books } from './data/books';
@@ -28,6 +29,14 @@ RightSideComponent.propTypes = {
 const App = () => {
   return (
     <>
+      <Modal>
+        <NumberedList
+          items={books}
+          sourceName='book'
+          ItemComponent={LargeBookListItem}
+        />
+      </Modal>
+
       <SplitScreen leftWidth={1} rightWidth={3}>
         <LeftSideComponent title='Left' />
         <RightSideComponent title='Right' />
@@ -51,12 +60,6 @@ const App = () => {
         items={books}
         sourceName='book'
         ItemComponent={SmallBookListItem}
-      />
-
-      <NumberedList
-        items={books}
-        sourceName='book'
-        ItemComponent={LargeBookListItem}
       />
     </>
   );
