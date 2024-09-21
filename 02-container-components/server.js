@@ -37,18 +37,21 @@ let users = [
 
 let books = [
   {
+    id: 1,
     name: 'To Kill a Mockingbird',
     pages: 281,
     title: 'Harper Lee',
     price: 12.99,
   },
   {
+    id: 2,
     name: 'The Catcher in the Rye',
     pages: 224,
     title: 'J.D. Salinger',
     price: 9.99,
   },
   {
+    id: 3,
     name: 'The Little Prince',
     pages: 85,
     title: 'Antoine de Saint-Exupéry',
@@ -79,7 +82,7 @@ app.get('/api/books', (req, res) => res.json(books));
 
 app.get('/api/books/:id', (req, res) => {
   const { id } = req.params;
-  res.json(books.find((book) => book.id === id));
+  res.json(books.find((book) => book.id === Number(id)));
 });
 
 let SERVER_PORT = 9090;
