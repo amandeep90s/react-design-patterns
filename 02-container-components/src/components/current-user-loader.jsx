@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
 export const CurrentUserLoader = ({ children }) => {
@@ -26,4 +27,8 @@ export const CurrentUserLoader = ({ children }) => {
       })}
     </>
   );
+};
+
+CurrentUserLoader.propTypes = {
+  children: PropTypes.node,
 };
